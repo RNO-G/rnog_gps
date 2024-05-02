@@ -10,15 +10,23 @@ sudo killall gpsd
 if [[ -f /REV ]] ; 
 then 
   rev=`cat /REV` 
-  echo "rev is E" 
+  echo "rev is $rev" 
   if [[ $rev == "E" ]] 
   then 
     echo "Changing baud rate" 
     ubxtool -s 9600 -S 57600 -f  /dev/ttyGPS
+    stty -F /dev/ttyGPS 57600
   fi
+  if [[ $rev == "F" ]] 
+  then 
+    echo "Changing baud rate" 
+    ubxtool -s 9600 -S 115200 -f  /dev/ttyGPS-USB
+    stty -F /dev/ttyGPS 115200
+    stty -F /dev/ttyGPS-USB 115200
+  fi
+
 fi
 
-stty -F /dev/ttyO4 57600
-sudo gpsd /dev/ttyO4 -F /var/run/gpsd.sock 
+sudo gpsd /dev/ttyGPS -F /var/run/gpsd.sock 
 sudo mkdir -p /data/gps  && sudo chown rno-g:rno-g /data/gps
 
