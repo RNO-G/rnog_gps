@@ -17,7 +17,7 @@ ubxtool -e GPS ::$dev #enable only GPS constellation
 ubxtool -e RAWX ::$dev #enable raw measurement messages
 ubxtool -e PPS ::$dev #enable timpulse0 [pps]
 ubxtool -e TP  ::$dev #enable tim-tp message
-ubxtool -e NAV-SVIN  ::$dev #enable tim-tp message
+#ubxtool -e NAV-SVIN  ::$dev #enable tim-tp message
 
 #ubxtool -w 4 | fgrep RAWX #confirm RAW messaging
 #ubxtool -w 4 | fgrep TP
