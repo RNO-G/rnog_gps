@@ -22,3 +22,4 @@ ubxtool -e MON-SPAN  -f $dev #enable tim-tp message
 #ubxtool -w 4 | fgrep TP
 
 
+done
