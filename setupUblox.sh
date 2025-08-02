@@ -4,7 +4,7 @@
 for dev in /dev/ttyZ9P /dev/ttyGPS ; do
 
 ubxtool -d NMEA -f $dev #disable NMEA messages
-ubxtool -e BINARY  -f $dev#enable binary messages
+ubxtool -e BINARY  -f $dev #enable binary messages
 
 ubxtool -e BEIDOU -f $dev
 ubxtool -e GALILEO -f $dev
