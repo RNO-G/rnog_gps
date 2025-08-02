@@ -6,6 +6,14 @@ sudo killall gpsd
 
 
 
+
+if [ ! -e /dev/ttyZ9P ] ; 
+then 
+  echo "Creating symlink for /dev/ttyZ9P"
+  sudo ln -s /dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_GNSS_receiver-if00 /dev/ttyZ9P
+  ubxtool -f /dev/ttyZ9P -S 115200
+fi 
+
 #if we have REVE, set speed to 57600 
 if [[ -f /REV ]] ; 
 then 
@@ -26,6 +34,6 @@ then
 
 fi
 
-sudo gpsd /dev/ttyGPS -F /var/run/gpsd.sock 
+sudo gpsd /dev/ttyGPS /dev/ttyZ9P -F /var/run/gpsd.sock 
 sudo mkdir -p /data/gps  && sudo chown rno-g:rno-g /data/gps
 
