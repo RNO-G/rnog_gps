@@ -4,7 +4,7 @@ ofile=${1-`date -Is`}
 SECS=${2-600}
 
 for dev in GPS Z9P ; do
-gpspipe -R "-x $SECS" ::/dev/tty$dev > /data/gps/$dev-$ofile.ubx &
+gpspipe -R "-x $SECS" /dev/tty$dev > /data/gps/$dev-$ofile.ubx &
 done
 wait
 
